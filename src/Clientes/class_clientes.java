@@ -34,7 +34,7 @@ public class class_clientes {
     String sql="select clientes.cedula, CONCAT(personas.nombres,' ',personas.ape_pat)AS nombre_cli,"
             + " personas.telefono,personas.celular"
             + " from clientes, personas\n" +
-                "where personas.cedula = clientes.cedula;";
+                "where personas.cedula = clientes.cedula and personas.estado=1";
     model= new DefaultTableModel(null,titulos);
         try {
             joyeria1.Joyeria1.con.Consultar(sql);
@@ -51,13 +51,13 @@ public class class_clientes {
         }
     }
      
-      public void buscar_Clientes( JTable x, String valor ){
+    public void buscar_Clientes( JTable x, String valor ){
     String [] titulos={"CEDULA","NOMBRES Y APELLIDO ","TELEFONO","CELULAR"};
     String [] registros= new String [4];
     String sql="select clientes.cedula, CONCAT(personas.nombres,' ',personas.ape_pat)AS nombre_cli,"
             + " personas.telefono,personas.celular"
             + " from clientes, personas\n" +
-              " where personas.cedula = clientes.cedula \n"+
+              " where personas.cedula = clientes.cedula and  personas.estado=1 \n"+
               " AND clientes.cedula like '%"+valor+"%'";
     model= new DefaultTableModel(null,titulos);
         try {
@@ -74,7 +74,7 @@ public class class_clientes {
             JOptionPane.showMessageDialog(null,ex);
         }
     }
-        public void deleteUsuario(String codigo){
+    public void deleteUsuario(String codigo){
             
         int n = 0;
         
@@ -99,8 +99,49 @@ public class class_clientes {
             JOptionPane.showMessageDialog(null, "ERROR al actualizar el pedido el estado" + e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-      
-       public void cargar_edit_usuario(String valor,JTextField x1,JTextField x2,JTextField x3, JTextField x4,JTextField x5, JTextField x6,JTextField x7)
+      public void ActivarCliente(String codigo){
+            
+        int n = 0;
+        
+        try {
+            String sql="update personas set estado=? WHERE cedula="+codigo+"";
+            // String sql="SELECT * FROM cliente where ced_client like '%"+valor+"%'"
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement(sql);
+            pst.setString(1, "1");
+
+            n = pst.executeUpdate();
+
+            if (n > 0) {
+                System.out.println( "Cliente Eliminado");
+                joyeria1.Joyeria1.ven.Mensaje("Cliente Eliminado","Cliente");
+                //obj1.cargar_(Administracion_clientes.tabla_clientes);
+                
+
+            }
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR al actualizar el pedido el estado" + e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public boolean cliente(String cedula){
+        boolean resul=false;
+         String sql="Select * from personas where personas.cedula='"+cedula+"'";               
+        try {
+
+            joyeria1.Joyeria1.con.Consultar(sql);
+            while (conexion.rs.next()){
+                resul=true;
+            }
+        }
+        catch(SQLException ex){
+        
+        }
+        
+        return resul;
+    }
+    public void cargar_edit_usuario(String valor,JTextField x1,JTextField x2,JTextField x3, JTextField x4,JTextField x5, JTextField x6,JTextField x7)
 {       String c="";
         String sql="Select * from personas where personas.cedula='"+valor+"'";               
         try {

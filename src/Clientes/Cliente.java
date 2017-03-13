@@ -76,6 +76,9 @@ Validacion obj = new Validacion();
             }
         });
         txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_cedulaKeyTyped(evt);
             }
@@ -245,10 +248,11 @@ class_clientes obj1 = new class_clientes();
        if(txt_cedula.getText().isEmpty() ||txt_nombres.getText().isEmpty() || txt_apePa.getText().isEmpty() || txt_apeMat.getText().isEmpty())
        {
            joyeria1.Joyeria1.ven.Mensaje_Error("Por favor no dejar Campos Vacios", "Campos Vacios");
-       }else
-             {
-        Object [] datos = new Object[8];
-        datos[0]=txt_cedula.getText();
+       }else{
+           
+         
+               Object [] datos = new Object[8];
+                datos[0]=txt_cedula.getText();
         datos[1]=txt_nombres.getText();
         datos[2]=txt_apePa.getText();
         datos[3]=txt_apeMat.getText();
@@ -274,7 +278,9 @@ class_clientes obj1 = new class_clientes();
         insertar_registro.InsertaRegistro("clientes",camposcli,datoscli);
     joyeria1.Joyeria1.ven.Mensaje("Clientes Registrado","Registro");
     obj1.cargar_Clientes(Administracion_clientes.tabla_clientes);
-               }
+           }
+        
+               
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyTyped
@@ -285,8 +291,19 @@ obj.solocedulasycelular(evt, txt_cedula.getText());
 if(txt_cedula.getText().equals("")){
                 //JOptionPane.showMessageDialog(null, "Aviso: el campo está vacío!");
             }else{
+    
         if(Validacion.esCedulaValida(txt_cedula.getText())){
-                    txt_cedula.setBackground(Color.WHITE);
+            txt_cedula.setBackground(Color.WHITE);
+                if(obj1.cliente(txt_cedula.getText())){
+                    obj1.cargar_edit_usuario(txt_cedula.getText(), txt_cedula, txt_nombres, txt_apePa, txt_apeMat, txt_telefono, txt_celular,txt_direccion);
+                        int a =JOptionPane.showConfirmDialog(null,"Cliente ya se encuentra registrado ¿Desea Activarlo?","Alerta",JOptionPane.WARNING_MESSAGE);
+                            if(a== JOptionPane.YES_OPTION){
+                                obj1.ActivarCliente(txt_cedula.getText());
+                            }else{
+                                
+                            }
+                }else{
+                        }
                 }else{
                     txt_cedula.setBackground(Color.getHSBColor(255,153,153));
                     JOptionPane.showMessageDialog(null, "Error:  La cédula ingresada es incorrecta","Super Barato",JOptionPane.ERROR_MESSAGE); 
@@ -314,6 +331,10 @@ obj.solotelefonos(evt, txt_telefono.getText());
     private void txt_celularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_celularKeyTyped
 obj.solocedulasycelular(evt, txt_celular.getText());
     }//GEN-LAST:event_txt_celularKeyTyped
+
+    private void txt_cedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyPressed
+              
+    }//GEN-LAST:event_txt_cedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
