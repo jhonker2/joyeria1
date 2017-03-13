@@ -76,6 +76,9 @@ private Admin_maestros maest ;
         menu_rcliente = new javax.swing.JMenuItem();
         menu_rusuarios = new javax.swing.JMenuItem();
         btn_rmaestros = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         menu_admini_usu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -247,6 +250,21 @@ private Admin_maestros maest ;
             }
         });
         jMenu2.add(btn_rmaestros);
+
+        jMenu3.setText("Pedidos");
+
+        jMenuItem4.setText("Pedidos Entregados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
+        jMenuItem5.setText("Pedidos No Entregados");
+        jMenu3.add(jMenuItem5);
+
+        jMenu2.add(jMenu3);
 
         jMenuBar1.add(jMenu2);
 
@@ -482,6 +500,23 @@ System.exit(0);
         }
     }//GEN-LAST:event_btn_rmaestrosActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+          conectar ccc = new conectar();
+     ccc.conexion();       
+         String ruta="src\\reportes\\PedidosE.jasper";
+     
+          JasperReport jr=null;
+       try {
+     jr= (JasperReport) JRLoader.loadObjectFromFile(ruta);
+     JasperPrint informe =JasperFillManager.fillReport(jr,null,ccc.conexion());
+     JasperViewer ventanavisor = new JasperViewer(informe,false);           
+ ventanavisor.setTitle("Lista de Pedidos Entregados");
+ ventanavisor.setVisible(true);
+ } catch (JRException ex) {
+            Logger.getLogger(Administracion_clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,11 +558,14 @@ System.exit(0);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menu_acerca;
     private javax.swing.JMenuItem menu_admini_usu;

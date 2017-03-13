@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f0ebbe0-5cdf-4571-9a58-67259ee346b5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM pedidos p where estado="Entregado"]]>
+	</queryString>
+	<field name="codigo_pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_pedido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora_entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pedido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abono" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula_maestro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="20" width="283" height="36" uuid="fb09a714-993b-469e-b096-364f6a02f42d"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Reportes de Pedidos Entregados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="20" backcolor="#999999" uuid="0ff092a5-aaa6-4852-9aff-7c36106f8760"/>
+				<staticText>
+					<reportElement x="0" y="0" width="50" height="20" forecolor="#FFFFFF" uuid="c8df38ef-1022-46c0-a7f5-b2e62fcfee68"/>
+					<text><![CDATA[CODIGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="200" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="e6e7ba2b-2aba-4052-a819-5ab06b41c21f"/>
+					<text><![CDATA[FECHA ENTREGA]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="421" y="0" width="58" height="20" uuid="035cf170-b5fd-47b1-bacf-7bbd492517b3"/>
+					<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="100" y="1" width="100" height="20" forecolor="#FFFFFF" uuid="c1e65be8-d322-45db-836b-6e624131c090"/>
+				<text><![CDATA[FECHA PEDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="121" height="20" forecolor="#FFFFFF" uuid="8cd108db-dd29-4a81-a4a0-2e6a86629958"/>
+				<text><![CDATA[PEDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="1" width="58" height="20" forecolor="#FFFFFF" uuid="d9dab2e5-4bb9-48ba-91ae-b453f857f2e3"/>
+				<text><![CDATA[PVP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="1" width="58" height="20" forecolor="#FFFFFF" uuid="7ef3a0a1-faf8-4b7c-ac04-0364b23b4975"/>
+				<text><![CDATA[ABONO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="100" height="20" uuid="3f14deb9-01ef-47d2-b760-21739046c785"/>
+				<textFieldExpression><![CDATA[$F{codigo_pedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="1" width="100" height="20" uuid="aac57514-4e32-41a9-833c-641b484307f9"/>
+				<textFieldExpression><![CDATA[$F{fecha_pedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="83cce56d-24f1-456c-a3b3-c1235c2d00c3"/>
+				<textFieldExpression><![CDATA[$F{fecha_entrega}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="121" height="20" uuid="d3eb0ca3-cabb-4f67-860a-5c7b93cfd443"/>
+				<textFieldExpression><![CDATA[$F{pedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="1" width="76" height="20" uuid="04a1e47f-b7f8-4567-be07-c035b7a69d7d"/>
+				<textFieldExpression><![CDATA[$F{abono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="1" width="58" height="20" uuid="d080c421-83f9-4a46-a65e-2fa91ae60501"/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="224" y="33" width="80" height="20" uuid="45b2a9b9-e92a-47a4-8946-9e948e10074f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="304" y="33" width="40" height="20" uuid="de20a04b-0911-4688-8eac-33c9be62aa12"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
