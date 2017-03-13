@@ -71,9 +71,11 @@ private Admin_maestros maest ;
         menu_cliente = new javax.swing.JMenu();
         menu_pedido = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
-        menu_facturacion = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        menu_rcliente = new javax.swing.JMenuItem();
+        menu_rusuarios = new javax.swing.JMenuItem();
+        btn_rmaestros = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         menu_admini_usu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -102,6 +104,9 @@ private Admin_maestros maest ;
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sistema de Pedidos");
 
+        Escritorio.setLayer(panelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
@@ -125,8 +130,6 @@ private Admin_maestros maest ;
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
-        Escritorio.setLayer(panelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,10 +213,7 @@ private Admin_maestros maest ;
         });
         jMenuBar1.add(jMenu1);
 
-        menu_facturacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1426145350_shopping_cart-16.png"))); // NOI18N
-        menu_facturacion.setText("Facturación");
-        jMenuBar1.add(menu_facturacion);
-
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/printer.png"))); // NOI18N
         jMenu2.setText("Reportes");
 
         jMenuItem3.setText("Reportes de Ventas");
@@ -223,6 +223,30 @@ private Admin_maestros maest ;
             }
         });
         jMenu2.add(jMenuItem3);
+
+        menu_rcliente.setText("Lista de Clientes");
+        menu_rcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_rclienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menu_rcliente);
+
+        menu_rusuarios.setText("Lista de Usuarios");
+        menu_rusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_rusuariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menu_rusuarios);
+
+        btn_rmaestros.setText("Lista de Maestros");
+        btn_rmaestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rmaestrosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btn_rmaestros);
 
         jMenuBar1.add(jMenu2);
 
@@ -407,6 +431,57 @@ System.exit(0);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void menu_rclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_rclienteActionPerformed
+         conectar ccc = new conectar();
+     ccc.conexion();       
+         String ruta="src\\reportes\\ListaClientes.jasper";
+     
+          JasperReport jr=null;
+       try {
+     jr= (JasperReport) JRLoader.loadObjectFromFile(ruta);
+     JasperPrint informe =JasperFillManager.fillReport(jr,null,ccc.conexion());
+     JasperViewer ventanavisor = new JasperViewer(informe,false);           
+ ventanavisor.setTitle("Lista de Clientes");
+ ventanavisor.setVisible(true);
+ } catch (JRException ex) {
+            Logger.getLogger(Administracion_clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menu_rclienteActionPerformed
+
+    private void menu_rusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_rusuariosActionPerformed
+       conectar ccc = new conectar();
+     ccc.conexion();       
+         String ruta="src\\reportes\\ListaUsuarios.jasper";
+     
+          JasperReport jr=null;
+       try {
+     jr= (JasperReport) JRLoader.loadObjectFromFile(ruta);
+     JasperPrint informe =JasperFillManager.fillReport(jr,null,ccc.conexion());
+     JasperViewer ventanavisor = new JasperViewer(informe,false);           
+ ventanavisor.setTitle("Lista de Usuarios");
+ ventanavisor.setVisible(true);
+ } catch (JRException ex) {
+            Logger.getLogger(Administracion_clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menu_rusuariosActionPerformed
+
+    private void btn_rmaestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rmaestrosActionPerformed
+        conectar ccc = new conectar();
+     ccc.conexion();       
+         String ruta="src\\reportes\\ListaMaestros.jasper";
+     
+          JasperReport jr=null;
+       try {
+     jr= (JasperReport) JRLoader.loadObjectFromFile(ruta);
+     JasperPrint informe =JasperFillManager.fillReport(jr,null,ccc.conexion());
+     JasperViewer ventanavisor = new JasperViewer(informe,false);           
+ ventanavisor.setTitle("Lista de Maestros");
+ ventanavisor.setVisible(true);
+ } catch (JRException ex) {
+            Logger.getLogger(Administracion_clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_rmaestrosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -444,6 +519,7 @@ System.exit(0);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenuItem btn_rmaestros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -457,9 +533,10 @@ System.exit(0);
     private javax.swing.JMenuItem menu_admini_usu;
     private javax.swing.JMenu menu_archivo;
     private javax.swing.JMenu menu_cliente;
-    private javax.swing.JMenu menu_facturacion;
     private javax.swing.JMenuItem menu_nuevo_pedido;
     private javax.swing.JMenu menu_pedido;
+    private javax.swing.JMenuItem menu_rcliente;
+    private javax.swing.JMenuItem menu_rusuarios;
     private javax.swing.JMenuItem menu_salir;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     // End of variables declaration//GEN-END:variables

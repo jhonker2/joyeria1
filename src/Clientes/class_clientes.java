@@ -112,8 +112,8 @@ public class class_clientes {
             n = pst.executeUpdate();
 
             if (n > 0) {
-                System.out.println( "Cliente Eliminado");
-                joyeria1.Joyeria1.ven.Mensaje("Cliente Eliminado","Cliente");
+                System.out.println( "Cliente Ingresado");
+                joyeria1.Joyeria1.ven.Mensaje("Cliente Ingresado","Cliente");
                 //obj1.cargar_(Administracion_clientes.tabla_clientes);
                 
 

@@ -295,10 +295,13 @@ if(txt_cedula.getText().equals("")){
         if(Validacion.esCedulaValida(txt_cedula.getText())){
             txt_cedula.setBackground(Color.WHITE);
                 if(obj1.cliente(txt_cedula.getText())){
+                    btn_guardar.disable();
                     obj1.cargar_edit_usuario(txt_cedula.getText(), txt_cedula, txt_nombres, txt_apePa, txt_apeMat, txt_telefono, txt_celular,txt_direccion);
                         int a =JOptionPane.showConfirmDialog(null,"Cliente ya se encuentra registrado ¿Desea Activarlo?","Alerta",JOptionPane.WARNING_MESSAGE);
                             if(a== JOptionPane.YES_OPTION){
                                 obj1.ActivarCliente(txt_cedula.getText());
+                                    obj1.cargar_Clientes(Administracion_clientes.tabla_clientes);
+                                     this.dispose();
                             }else{
                                 
                             }
