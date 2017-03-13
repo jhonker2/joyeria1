@@ -3,8 +3,10 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="21"/>
-	<queryString language="SQL">
-		<![CDATA[select * from cabecera,movimiento where cabecera.codigo=(select max(codigo) as id from cabecera) and cabecera.codigo=movimiento.id_cabecera]]>
+	<queryString>
+		<![CDATA[select *,concat(personas.nombres,' ',personas.ape_pat)as cliente from cabecera,movimiento,personas where cabecera.codigo=(select max(codigo) as id from cabecera) and cabecera.codigo=movimiento.id_cabecera and cabecera.cedula_cliente=personas.cedula
+
+]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -27,6 +29,31 @@
 	<field name="precio" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ape_pat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ape_mat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="celular" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cliente" class="java.lang.String"/>
 	<group name="codigo">
 		<groupExpression><![CDATA[$F{codigo}]]></groupExpression>
 	</group>
@@ -69,15 +96,39 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="74" splitType="Stretch">
+		<band height="98" splitType="Stretch">
 			<textField>
-				<reportElement x="46" y="12" width="100" height="20" uuid="d8f61fbe-105f-4fe6-9bcb-52df5ab24040"/>
+				<reportElement x="72" y="12" width="100" height="20" uuid="d8f61fbe-105f-4fe6-9bcb-52df5ab24040"/>
 				<textFieldExpression><![CDATA[$F{cedula_cliente}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="12" width="46" height="20" uuid="7e986613-5c5e-4265-80c0-216d1639fa5e"/>
+				<reportElement x="0" y="12" width="72" height="20" uuid="7e986613-5c5e-4265-80c0-216d1639fa5e"/>
 				<text><![CDATA[CEDULA:]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="72" y="52" width="100" height="20" uuid="6b6aea09-bf9f-4f61-b6bc-2c99027d930b"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="72" width="100" height="20" uuid="51bb4b0f-9826-4deb-b645-c5b61f42e05a"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="32" width="72" height="20" uuid="fa637a4a-ef3b-42e2-a80a-2b21d08fb831"/>
+				<text><![CDATA[CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="72" height="20" uuid="3bc503f7-d160-4609-a70f-3fc7ce91b445"/>
+				<text><![CDATA[DIRECCION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="72" height="20" uuid="86381c62-3462-4e16-89f8-8e357386a3c4"/>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="72" y="32" width="100" height="20" uuid="9d3aba59-0220-4860-a214-a9c5ce3b95b0"/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
