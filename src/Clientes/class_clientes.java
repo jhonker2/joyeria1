@@ -7,6 +7,9 @@ package Clientes;
 
 import clases.Validacion;
 import clases.conexion;
+import conexion_BD.conectar;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -20,8 +23,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class class_clientes {
     
-     DefaultTableModel model;
-            Validacion obj1 =new Validacion();
+    DefaultTableModel model;
+    Validacion obj1 =new Validacion(); 
+    conectar cc=new conectar();
+    Connection cn = cc.conexion();
     
      public void cargar_Clientes( JTable x ){
     String [] titulos={"CEDULA","NOMBRES Y APELLIDO ","TELEFONO","CELULAR"};
@@ -67,6 +72,31 @@ public class class_clientes {
                 } x.setModel(model);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex);
+        }
+    }
+        public void deleteUsuario(String codigo){
+            
+        int n = 0;
+        
+        try {
+            String sql="update personas set estado=? WHERE cedula="+codigo+"";
+            // String sql="SELECT * FROM cliente where ced_client like '%"+valor+"%'"
+            PreparedStatement pst = (PreparedStatement) cn.prepareStatement(sql);
+            pst.setString(1, "0");
+
+            n = pst.executeUpdate();
+
+            if (n > 0) {
+                System.out.println( "Cliente Eliminado");
+                joyeria1.Joyeria1.ven.Mensaje("Cliente Eliminado","Cliente");
+                //obj1.cargar_(Administracion_clientes.tabla_clientes);
+                
+
+            }
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR al actualizar el pedido el estado" + e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
       

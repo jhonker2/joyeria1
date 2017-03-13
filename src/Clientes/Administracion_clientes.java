@@ -130,6 +130,11 @@ Connection cn= cc.conexion();
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Eliminar Cliente");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Buscar Cliente");
@@ -330,6 +335,24 @@ ver.buscar_Clientes(tabla_clientes, txt_buscar.getText());
         
     }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+          try {
+            int  fila = tabla_clientes.getSelectedRow();
+                 if(fila==-1)
+                    {
+                    JOptionPane.showMessageDialog(null, "No  ha seleccionado ningun registro");
+                    }
+                     else
+                    {
+                    String codigo =tabla_clientes.getValueAt(fila, 0).toString();   
+                    System.out.println("Codigo de la Cuenta:" +codigo);
+                    ver.deleteUsuario(codigo);
+                    ver.cargar_Clientes(tabla_clientes);
+                    
+                    }
+            } catch (Exception e) {}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
