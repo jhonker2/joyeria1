@@ -5,6 +5,7 @@
  */
 package Factura;
 
+import Clientes.Administracion_clientes;
 import static Pagos.Pagos.tcedula;
 import static Pagos.Pagos.tcliente;
 import static Pagos.Pagos.tpedido;
@@ -18,6 +19,12 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -409,6 +416,25 @@ public class Facturar extends javax.swing.JInternalFrame {
             joyeria1.Joyeria1.ven.Mensaje("Venta Realizada Con Exito","Venta");
             this.dispose();
         
+             int a =JOptionPane.showConfirmDialog(null,"¿DESEA IMPRIMIR LA NOTA DE VENTA?","IMPRIMIR",JOptionPane.WARNING_MESSAGE);
+      if(a== JOptionPane.YES_OPTION){
+     conectar ccc = new conectar();
+     ccc.conexion();       
+         String ruta="src\\reportes\\Nventa.jasper";
+     
+          JasperReport jr=null;
+       try {
+     jr= (JasperReport) JRLoader.loadObjectFromFile(ruta);
+     JasperPrint informe =JasperFillManager.fillReport(jr,null,cc.conexion());
+     JasperViewer ventanavisor = new JasperViewer(informe,false);           
+ ventanavisor.setTitle("NOTA DE VENTA");
+ ventanavisor.setVisible(true);
+ } catch (JRException ex) {
+            Logger.getLogger(Facturar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+            
+            
     }//GEN-LAST:event_btn_guardarActionPerformed
 
 
