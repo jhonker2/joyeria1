@@ -91,7 +91,7 @@ public class Facturar extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return value;
+        return value+1;
     }
     
     public void DatosCliente(String cedula){
