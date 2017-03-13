@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="425" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8230d6ee-72be-4983-b5b7-7a2f2468a917">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from pedidos]]>
+	</queryString>
+	<field name="codigo_pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_pedido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora_entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pedido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abono" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula_maestro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="224" y="13" width="163" height="23" uuid="0623bc4c-c275-4bbf-aaaf-f1c4a26080c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre de la Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="36" width="201" height="29" uuid="35961b00-0a60-47b4-8e35-c51c0ed2c5c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<image>
+				<reportElement x="93" y="0" width="93" height="79" uuid="66b572a1-786f-44b4-8478-826ce29f77c6"/>
+				<imageExpression><![CDATA["C:\\Users\\Jhonker2\\Documents\\NetBeansProjects\\joyeria1\\src\\imagenes\\anillo2.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="19" width="45" height="20" uuid="a4777fd3-ce29-42e5-acc0-cb3e3fa5c115"/>
+				<text><![CDATA[Cedula:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="39" width="45" height="20" uuid="39c21cc9-04a3-4444-a37e-19376a3d4f3f"/>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="59" width="45" height="20" uuid="47f4c55b-5e99-43a9-a1cb-3f56ba1e9661"/>
+				<text><![CDATA[Pedido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="79" width="107" height="20" uuid="f3d60f82-3021-4493-8992-70f647a0ec18"/>
+				<text><![CDATA[Fecha de Entrega]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="99" width="107" height="20" uuid="f0512d5c-7df9-4905-af74-333b5d15a9cd"/>
+				<text><![CDATA[Hora de Entrega]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="19" width="107" height="20" uuid="de9c462d-1fd6-4134-816d-5b692d89f788"/>
+				<text><![CDATA[Numero de Recibo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="356" y="0" width="107" height="20" uuid="1242fda8-33f0-454e-b1bc-df9d66a68fc1"/>
+				<text><![CDATA[Precio de la Joya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="20" width="107" height="20" uuid="1b7ec615-c7ee-4006-96d4-da2b29b541cf"/>
+				<text><![CDATA[Abono Realizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="40" width="107" height="20" uuid="df6cb63f-1558-41ba-aa49-9e994985b315"/>
+				<text><![CDATA[Total Faltante]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
