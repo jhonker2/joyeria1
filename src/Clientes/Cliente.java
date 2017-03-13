@@ -277,7 +277,7 @@ class_clientes obj1 = new class_clientes();
         camposcli[0]="cedula";
         insertar_registro.InsertaRegistro("clientes",camposcli,datoscli);
     joyeria1.Joyeria1.ven.Mensaje("Clientes Registrado","Registro");
-    obj1.cargar_Clientes(Administracion_clientes.tabla_clientes);
+    obj1.cargar_Clientes(Administracion_clientes.tabla_clientes);this.dispose();
            }
         
                
